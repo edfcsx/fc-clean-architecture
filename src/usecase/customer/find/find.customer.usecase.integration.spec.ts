@@ -31,11 +31,9 @@ describe('Test find customer use case', () => {
     customer.changeAddress(address)
 
     const customerRepository = new CustomerRepository()
-    const customerCreated = await customerRepository.create(customer)
-
+    await customerRepository.create(customer)
 
     const usecase = new FindCustomerUseCase(customerRepository)
-
     const useCaseInput: InputFindCustomerDTO = { id: '123' }
     const useCaseOutput: OutputFindCustomerDTO = {
       id: '123',
@@ -48,7 +46,7 @@ describe('Test find customer use case', () => {
       }
     }
 
-    const result = usecase.handle(useCaseInput)
+    const result = await usecase.handle(useCaseInput)
     expect(result).toStrictEqual(useCaseOutput)
   })
 })
