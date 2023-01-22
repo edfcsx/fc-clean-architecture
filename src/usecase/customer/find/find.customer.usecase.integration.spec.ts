@@ -49,4 +49,13 @@ describe('Test find customer use case', () => {
     const result = await usecase.handle(useCaseInput)
     expect(result).toStrictEqual(useCaseOutput)
   })
+
+  it('should not find a customer', async () => {
+    const customerRepository = new CustomerRepository()
+    const usecase = new FindCustomerUseCase(customerRepository)
+
+    await expect(() => {
+      return usecase.handle({ id: '123' })
+    }).rejects.toThrow('Customer not found')
+  })
 })
