@@ -2,8 +2,9 @@ import Address from '@domain/customer/value-object/address'
 import { InputCreateCustomerDTO, OutputCreateCustomerDTO } from './create.customer.dto'
 import CustomerRepositoryInterface from '@domain/customer/repository/customer-repository.interface'
 import CustomerFactory from '@domain/customer/factory/customer.factory'
+import UseCaseInterface from '@usecase/@shared/usecase-interface'
 
-export default class CreateCustomerUseCase {
+export default class CreateCustomerUseCase implements UseCaseInterface<InputCreateCustomerDTO, Promise<OutputCreateCustomerDTO>> {
   private repository: CustomerRepositoryInterface
 
   constructor (repository: CustomerRepositoryInterface) {

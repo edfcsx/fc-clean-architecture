@@ -1,8 +1,9 @@
+import UseCaseInterface from '@usecase/@shared/usecase-interface'
 import { InputListCustomerDTO, OutputListCustomerDTO } from './list.customer.dto'
 import CustomerRepositoryInterface from '@domain/customer/repository/customer-repository.interface'
 import Customer from '@domain/customer/entity/customer'
 
-export default class ListCustomerUseCase {
+export default class ListCustomerUseCase implements UseCaseInterface<InputListCustomerDTO, Promise<OutputListCustomerDTO>> {
   private repository: CustomerRepositoryInterface
 
   constructor (repository: CustomerRepositoryInterface) {

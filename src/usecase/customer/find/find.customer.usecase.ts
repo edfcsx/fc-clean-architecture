@@ -1,7 +1,8 @@
+import UseCaseInterface from '@usecase/@shared/usecase-interface'
 import { InputFindCustomerDTO, OutputFindCustomerDTO } from './find.customer.dto'
 import CustomerRepositoryInterface from '@domain/customer/repository/customer-repository.interface'
 
-export default class FindCustomerUseCase {
+export default class FindCustomerUseCase implements UseCaseInterface<InputFindCustomerDTO, Promise<OutputFindCustomerDTO>> {
   private repository: CustomerRepositoryInterface
 
   constructor (repository: CustomerRepositoryInterface) {

@@ -1,8 +1,9 @@
+import UseCaseInterface from '@usecase/@shared/usecase-interface'
 import { InputUpdateCustomerDTO, OutputUpdateCustomerDTO } from './update.customer.dto'
 import CustomerRepositoryInterface from '@domain/customer/repository/customer-repository.interface'
 import Address from '@domain/customer/value-object/address'
 
-export default class UpdateCustomerUseCase {
+export default class UpdateCustomerUseCase implements UseCaseInterface<InputUpdateCustomerDTO, Promise<OutputUpdateCustomerDTO>> {
   private repository: CustomerRepositoryInterface
 
   constructor (repository: CustomerRepositoryInterface) {
