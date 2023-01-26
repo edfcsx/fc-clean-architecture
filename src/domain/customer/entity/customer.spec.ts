@@ -6,14 +6,14 @@ describe('Customer unit test', () => {
 		expect(() => {
 			// eslint-disable-next-line no-new
 			new Customer('', 'john')
-		}).toThrowError('Id is required')
+		}).toThrowError('customer: id is required')
 	})
 
 	it('should throw error when name is empty', () => {
 		expect(() => {
 			// eslint-disable-next-line no-new
 			new Customer('', '')
-		}).toThrowError('Name is required')
+		}).toThrowError('customer: name is required')
 	})
 
 	it('should change name', () => {

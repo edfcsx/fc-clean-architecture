@@ -42,7 +42,7 @@ describe('Unit test create customer use case', () => {
     input.name = ''
 
     await expect(new CreateCustomerUseCase(repository).handle(input)).rejects
-      .toThrow('Name is required')
+      .toThrow('customer: name is required')
   })
 
   it('should throw an error when street is missing', async () => {
