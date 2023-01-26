@@ -131,3 +131,5 @@ dist
 
 # Sqlite3 Local files
 memory
+
+.idea
