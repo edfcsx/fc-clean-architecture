@@ -1,6 +1,7 @@
 import Address from '../value-object/address'
 import Entity from '@domain/@shared/entity/entity.abstract'
 import NotificationError from '@domain/@shared/notification/notification.error'
+import CustomerValidatorFactory from '@domain/customer/factory/customer.validator.factory'
 
 export default class Customer extends Entity {
   private _name: string
@@ -43,19 +44,7 @@ export default class Customer extends Entity {
   }
 
   validate () {
-    if (this._name.length === 0) {
-      this.notification.addError({
-        context: 'customer',
-        message: 'name is required'
-      })
-    }
-
-    if (this.id.length === 0) {
-      this.notification.addError({
-        context: 'customer',
-        message: 'id is required'
-      })
-    }
+    CustomerValidatorFactory.create().validate(this)
   }
 
   isActive (): boolean {
@@ -64,7 +53,8 @@ export default class Customer extends Entity {
 
   activate () {
     if (!this._address) {
-      throw new Error('Address is mandatory to active a customer')
+      this.notification.addError({ context: 'Customer', message: 'Address is mandatory to active a customer' })
+      throw new NotificationError(this.notification.getErrors())
     }
 
     this._active = true

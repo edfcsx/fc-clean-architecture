@@ -37,7 +37,7 @@ describe('Unit test create product use case', () => {
     const repository = makeMockRepository()
 
     await expect(new CreateProductUseCase(repository).handle(input))
-      .rejects.toThrowError('Name is required')
+      .rejects.toThrowError('Product: name is required')
   })
 
   it('should throw error when price is less than 0', async () => {
@@ -50,7 +50,7 @@ describe('Unit test create product use case', () => {
     const repository = makeMockRepository()
 
     await expect(new CreateProductUseCase(repository).handle(input))
-      .rejects.toThrowError('Price must be great than zero')
+      .rejects.toThrowError('Product: price must be great than zero')
   })
 
   it('should throw error when product type invalid', async () => {

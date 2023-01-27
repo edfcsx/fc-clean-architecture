@@ -6,14 +6,14 @@ describe('Customer unit test', () => {
 		expect(() => {
 			// eslint-disable-next-line no-new
 			new Customer('', 'john')
-		}).toThrowError('customer: id is required')
+		}).toThrowError('Customer: id is required')
 	})
 
 	it('should throw error when name is empty', () => {
 		expect(() => {
 			// eslint-disable-next-line no-new
 			new Customer('', '')
-		}).toThrowError('customer: name is required')
+		}).toThrowError('Customer: name is required')
 	})
 
 	it('should change name', () => {
@@ -31,6 +31,13 @@ describe('Customer unit test', () => {
 
 		expect(customer.isActive()).toBe(true)
 	})
+
+  it('should not active customer', () => {
+    expect(() => {
+      const customer = new Customer('1', 'John Doe')
+      customer.activate()
+    }).toThrowError('Customer: Address is mandatory to active a customer')
+  })
 
 	it('should deactivate customer', () => {
 		const customer = new Customer('1', 'John Doe')
